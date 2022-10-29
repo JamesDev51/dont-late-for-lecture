@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "764354600900",
+    "project_id": "dont-late-for-lecture",
+    "storage_bucket": "dont-late-for-lecture.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764354600900:android:63a3cb0b3f026893940e91",
+        "android_client_info": {
+          "package_name": "com.team8.dlfl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764354600900-vvpd1tebugdmc6hs658d3tagdd7thmpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-0zniVhAMpQ5_DVwYYrfo4E0H1Tuvm-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764354600900-vvpd1tebugdmc6hs658d3tagdd7thmpk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
