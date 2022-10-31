@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".RegisterFragment" android:layout_margin="15dp">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginBottom="8dp"
+                  android:layout_marginEnd="24dp"
+                  android:layout_marginStart="24dp"
+                  android:layout_marginTop="8dp"
+                  android:orientation="vertical"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+    >
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/loginHeader"
+                android:text="@string/register2"
+                android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+
+        <EditText
+                android:id="@+id/editTextEmail"
+                style="@style/modifiedEditText"
+                android:hint="@string/login_email_hint"
+                android:inputType="textEmailAddress"
+                android:maxLines="1" android:autofillHints="emailAddress" android:layout_height="wrap_content" android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp" android:layout_marginEnd="15dp" android:layout_marginBottom="15dp"/>
+
+        <EditText
+                android:id="@+id/editTextPassword"
+                style="@style/modifiedEditText"
+                android:hint="@string/login_password_hint"
+                android:inputType="textPassword"
+                android:maxLines="1" android:autofillHints="password" android:layout_height="wrap_content" android:layout_margin="15dp"/>
+
+        <EditText
+                android:id="@+id/editTextPassword2"
+                style="@style/modifiedEditText"
+                android:hint="@string/login_password_hint2"
+                android:inputType="textPassword"
+                android:maxLines="1" android:autofillHints="password" android:layout_height="wrap_content" android:layout_margin="15dp"/>
+
+        <EditText
+                android:id="@+id/editTextName"
+                style="@style/modifiedEditText"
+                android:hint="@string/login_name_hint"
+                android:inputType="textPersonName"
+                android:maxLines="1" android:autofillHints="name" android:layout_height="wrap_content" android:layout_margin="15dp"/>
+
+        <EditText
+                android:id="@+id/editTextMobile"
+                style="@style/modifiedEditText"
+                android:hint="@string/login_mobile_number_hint"
+                android:inputType="phone"
+                android:maxLines="1" android:autofillHints="phone" android:layout_height="wrap_content" android:layout_margin="15dp"/>
+
+
+        <Button
+                android:id="@+id/btn_register"
+                style="@style/loginButton"
+                android:text="@string/signup"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/loginViewsMargin" tools:ignore="RtlHardcoded"/>
+
+        <TextView
+                style="@style/parent"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:textColor="@color/primaryTextColor"
+                android:text="@string/signup_login_hint"
+                android:layout_marginTop="@dimen/loginViewsMargin" android:id="@+id/text_login"/>
+
+    </LinearLayout>
+</FrameLayout>
