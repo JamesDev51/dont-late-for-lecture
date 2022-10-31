@@ -8,4 +8,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
+    companion object {
+        @JvmStatic fun newInstance() =
+            LoginFragment().apply {
+                arguments = Bundle().apply {
+
+                }
+            }
+    }
 }
