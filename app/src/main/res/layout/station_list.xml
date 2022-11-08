@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:padding="4dp"
+              xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+            android:id="@+id/text_line_number"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content" android:layout_marginRight="20dp" android:text="2호선" android:textSize="20sp"/>
+    <TextView
+            android:id="@+id/text_station_name"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceListItemSmall"
+            tools:text="홍대입구" android:textSize="20sp"/>
+
+</LinearLayout>

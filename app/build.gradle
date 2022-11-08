@@ -4,6 +4,9 @@ plugins {
     id 'com.google.gms.google-services' //구글서비스 추가
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     compileSdk 32
 
@@ -13,6 +16,9 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
+
+        // api key 변수 지정
+        buildConfigField "String", "API_KEY", properties['seoul.api.key']
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -60,5 +66,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
 
     implementation 'com.google.firebase:firebase-database-ktx'
+
+    implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.9.0'
+    implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.9.0'
+
 
 }
