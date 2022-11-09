@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MarkFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="409dp"
+                android:layout_height="729dp"
+                tools:layout_editor_absoluteY="1dp"
+                tools:layout_editor_absoluteX="1dp">
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <ImageButton
+                        android:src="@drawable/previous"
+                        android:layout_width="16dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btn_previous"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:layout_margin="5dp" />
+
+                <TextView
+                        android:text="즐겨찾기"
+                        android:layout_width="180dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/textView2"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textSize="34sp"
+                        android:textColor="#000000"
+                        android:layout_margin="5dp"
+                        tools:textAlignment="center" />
+
+                <ImageButton
+                        android:src="@drawable/plus"
+                        android:layout_width="16dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btn_plus"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:layout_margin="5dp" />
+
+                <ImageButton
+                        android:src="@drawable/delete"
+                        android:layout_width="16dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btn_delete"
+                        android:layout_weight="1"
+                        android:background="#FDFDFD"
+                        android:layout_margin="5dp" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

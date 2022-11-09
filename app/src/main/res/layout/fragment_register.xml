@@ -54,13 +54,16 @@
                 android:inputType="textPersonName"
                 android:maxLines="1" android:autofillHints="name" android:layout_height="wrap_content" android:layout_margin="15dp"/>
 
+
         <EditText
                 android:id="@+id/editTextMobile"
                 style="@style/modifiedEditText"
                 android:hint="@string/login_mobile_number_hint"
                 android:inputType="phone"
-                android:maxLines="1" android:autofillHints="phone" android:layout_height="wrap_content" android:layout_margin="15dp"/>
-
+                android:maxLines="1"
+                android:autofillHints="phone"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp" />
 
         <Button
                 android:id="@+id/btn_register"
