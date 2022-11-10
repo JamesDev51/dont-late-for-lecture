@@ -9,14 +9,7 @@
             android:id="@+id/entryFragment"
             android:name="com.team8.dlfl.EntryFragment"
             android:label="전체 노선도"
-            tools:layout="@layout/fragment_entry">
-        <action
-                android:id="@+id/action_entryFragment_to_twitterWebFragment"
-                app:destination="@id/twitterWebFragment" />
-        <action
-                android:id="@+id/action_entryFragment_to_markFragment"
-                app:destination="@id/markFragment" />
-    </fragment>
+            tools:layout="@layout/fragment_entry"/>
     <fragment
             android:id="@+id/markFragment"
             android:name="com.team8.dlfl.MarkFragment"

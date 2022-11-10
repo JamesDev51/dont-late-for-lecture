@@ -7,7 +7,11 @@
             android:id="@+id/twitterWebFragment"
             android:icon="@drawable/twitter" />
     <item
+            android:title="전체 노선도"
+            android:id="@+id/entryFragment"
+            android:icon="@drawable/ic_baseline_subway_24" />
+    <item
             android:title="즐겨찾기"
             android:id="@+id/markFragment"
-            android:icon="@drawable/ic_baseline_subway_24" />
+            android:icon="@drawable/ic_baseline_star_24" />
 </menu>
