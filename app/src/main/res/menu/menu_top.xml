@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:title="최신알림"
+            android:id="@+id/twitterWebFragment"
+            android:icon="@drawable/twitter" />
+    <item
+            android:title="즐겨찾기"
+            android:id="@+id/markFragment"
+            android:icon="@drawable/ic_baseline_subway_24" />
+</menu>
