@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_main"
+        app:startDestination="@id/entryFragment">
+
+    <fragment
+            android:id="@+id/entryFragment"
+            android:name="com.team8.dlfl.EntryFragment"
+            android:label="전체 노선도"
+            tools:layout="@layout/fragment_entry">
+        <action
+                android:id="@+id/action_entryFragment_to_twitterWebFragment"
+                app:destination="@id/twitterWebFragment" />
+        <action
+                android:id="@+id/action_entryFragment_to_markFragment"
+                app:destination="@id/markFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/markFragment"
+            android:name="com.team8.dlfl.MarkFragment"
+            android:label="즐겨찾기"
+            tools:layout="@layout/fragment_mark">
+        <action
+                android:id="@+id/action_markFragment_to_addFragment"
+                app:destination="@id/addFragment" />
+        <action
+                android:id="@+id/action_markFragment_to_latelyFragment"
+                app:destination="@id/latelyFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/addFragment"
+            android:name="com.team8.dlfl.AddFragment"
+            android:label="즐겨찾기 등록"
+            tools:layout="@layout/fragment_add">
+        <action
+                android:id="@+id/action_addFragment_to_markFragment"
+                app:destination="@id/markFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/twitterWebFragment"
+            android:name="com.team8.dlfl.TwitterWebFragment"
+            android:label="최신 알림"
+            tools:layout="@layout/fragment_twitter_web" />
+    <fragment
+            android:id="@+id/latelyFragment"
+            android:name="com.team8.dlfl.LatelyFragment"
+            android:label="실시간 지하철 위치 정보"
+            tools:layout="@layout/fragment_lately" />
+</navigation>
