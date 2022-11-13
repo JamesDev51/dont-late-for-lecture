@@ -5,23 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-<<<<<<< Updated upstream
 import com.team8.dlfl.R
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-=======
-import com.team8.dlfl.ARG_PARAM1
-import com.team8.dlfl.ARG_PARAM2
-import com.team8.dlfl.R
-
-/**
- * A simple [Fragment] subclass.
- * Use the [LatelyFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
->>>>>>> Stashed changes
 class LatelyFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null

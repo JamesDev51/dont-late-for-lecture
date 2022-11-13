@@ -5,23 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-<<<<<<< Updated upstream
 import com.team8.dlfl.R
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-=======
-import com.team8.dlfl.ARG_PARAM1
-import com.team8.dlfl.ARG_PARAM2
-import com.team8.dlfl.R
-
-/**
- * A simple [Fragment] subclass.
- * Use the [TwitterWebFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
->>>>>>> Stashed changes
 class TwitterWebFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -44,15 +32,7 @@ class TwitterWebFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment TwitterWebFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             TwitterWebFragment().apply {
