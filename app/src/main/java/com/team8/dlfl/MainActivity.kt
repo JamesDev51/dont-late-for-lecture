@@ -2,19 +2,34 @@ package com.team8.dlfl
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.team8.dlfl.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var binding : ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val navController = binding.frgNav.getFragment<NavHostFragment>().navController
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.entryFragment, R.id.twitterWebFragment, R.id.markFragment)  //  top level 메뉴들
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        binding.bottomNav.setupWithNavController(navController)
+        setContentView(binding?.root)
     }
 
-    companion object {
-        @JvmStatic fun newInstance() =
-            LoginFragment().apply {
-                arguments = Bundle().apply {
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = binding.frgNav.getFragment<NavHostFragment>().navController
 
-                }
-            }
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
+
 }
