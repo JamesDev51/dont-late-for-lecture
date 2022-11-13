@@ -5,7 +5,7 @@
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".LoginFragment" android:id="@+id/login_fragment">
+            tools:context=".fragment.LoginFragment" android:id="@+id/login_fragment">
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

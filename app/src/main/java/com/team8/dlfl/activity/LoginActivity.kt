@@ -1,8 +1,10 @@
-package com.team8.dlfl
+package com.team8.dlfl.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.team8.dlfl.fragment.LoginFragment
+import com.team8.dlfl.R
 import com.team8.dlfl.databinding.ActivityLoginBinding
 
 const val EMAIL = "email"

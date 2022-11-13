@@ -1,4 +1,4 @@
-package com.team8.dlfl
+package com.team8.dlfl.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.team8.dlfl.databinding.ActivityMainBinding
+import com.team8.dlfl.fragment.LoginFragment
+import com.team8.dlfl.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNav.setupWithNavController(navController)
-        setContentView(binding?.root)
+        setContentView(binding.root)
     }
 
     override fun onSupportNavigateUp(): Boolean {

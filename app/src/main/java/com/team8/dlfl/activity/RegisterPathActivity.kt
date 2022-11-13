@@ -1,9 +1,10 @@
-package com.team8.dlfl
+package com.team8.dlfl.activity
 
 import android.os.Bundle
 import android.util.Log
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
+import com.team8.dlfl.StationNameRespDto
 import com.team8.dlfl.adapter.StationAdapter
 import com.team8.dlfl.databinding.ActivityRegisterPathBinding
 import com.team8.dlfl.model.Station
