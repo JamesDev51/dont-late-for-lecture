@@ -4,14 +4,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.team8.dlfl.R
 import com.team8.dlfl.databinding.FragmentAddBinding
+import com.team8.dlfl.model.Station
+
 
 class AddFragment : Fragment() {
 
-    var binding: FragmentAddBinding? = null
+    private var binding: FragmentAddBinding? = null
+
+    private var stationList = ArrayList<Station>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = FragmentAddBinding.inflate(layoutInflater)
+
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,11 +35,21 @@ class AddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding?.btnAdd?.setOnClickListener { //  등록하고 즐겨찾기 페이지 가기
-            findNavController().navigate(R.id.action_addFragment_to_markFragment)
+        val editTextDeparture = binding?.editTextDeparture
+        val editTextMiddle = binding?.editTextMiddle
+        val editTextArrival = binding?.editTextArrival
+
+        editTextDeparture?.setOnKeyListener { _, _, _ ->
+            findStationName(editTextDeparture)
+            false
         }
-        binding?.btnCancel?.setOnClickListener {  //  등록 취소하면 즐겨찾기 페이지 가기
-            findNavController().navigate(R.id.action_addFragment_to_markFragment)
+        editTextMiddle?.setOnKeyListener { _, _, _ ->
+            findStationName(editTextMiddle)
+            false
+        }
+        editTextArrival?.setOnKeyListener { _, _, _ ->
+            findStationName(editTextArrival)
+            false
         }
     }
 
@@ -37,4 +58,9 @@ class AddFragment : Fragment() {
         binding = null
     }
 
+    private fun findStationName(editText: AutoCompleteTextView?) {
+
+        val keyword = editText?.text.toString()
+
+    }
 }
