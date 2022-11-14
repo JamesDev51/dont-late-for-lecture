@@ -3,12 +3,13 @@ package com.team8.dlfl.model
 import com.google.gson.annotations.SerializedName
 
 data class Station(
-    @SerializedName("STATION_CD") val stationCode: String,
-    @SerializedName("STATION_NM") val stationName: String,
-    @SerializedName("LINE_NUM") val lineNumber: String,
-    @SerializedName("FR_CODE") val externalCode: String
+    @SerializedName("code") val stationCode: String,
+    @SerializedName("station_name") val stationName: String,
+    @SerializedName("station_name_eng") val stationNameEng: String,
+    @SerializedName("line_number") val lineNumber: String,
+    @SerializedName("ex_code") val externalCode: String,
 ){
     override fun toString(): String {
-        return "$lineNumber - $stationName"
+        return "$lineNumber  $stationName  ($externalCode)"
     }
 }

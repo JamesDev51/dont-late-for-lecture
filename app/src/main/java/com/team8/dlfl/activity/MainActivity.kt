@@ -7,7 +7,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.team8.dlfl.databinding.ActivityMainBinding
-import com.team8.dlfl.fragment.LoginFragment
 import com.team8.dlfl.R
 
 class MainActivity : AppCompatActivity() {

@@ -49,6 +49,8 @@ class StationAdapter(context: Context,private var stationList: List<Station>) : 
         }
         binding.textLineNumber.text = stationList[position].lineNumber
         binding.textStationName.text =stationList[position].stationName
+        binding.textStationNameEng.text=stationList[position].stationNameEng
+        binding.textExCode.text=stationList[position].externalCode
 
         return row
     }
