@@ -35,6 +35,8 @@ class StationAdapter(context: Context,private var stationList: List<Station>) : 
         }
     }
 
+
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val binding: StationListBinding
         var row = convertView
@@ -47,6 +49,7 @@ class StationAdapter(context: Context,private var stationList: List<Station>) : 
         } else {
             binding = StationListBinding.bind(row)
         }
+
         binding.textLineNumber.text = stationList[position].lineNumber
         binding.textStationName.text =stationList[position].stationName
         binding.textStationNameEng.text=stationList[position].stationNameEng

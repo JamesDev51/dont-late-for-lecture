@@ -6,6 +6,7 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
@@ -13,6 +14,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.team8.dlfl.adapter.StationAdapter
 import com.team8.dlfl.databinding.FragmentAddBinding
 import com.team8.dlfl.db.DBHelper
+import com.team8.dlfl.dto.StationDto
 import com.team8.dlfl.model.Station
 
 
@@ -22,6 +24,11 @@ class AddFragment : Fragment() {
     private var binding: FragmentAddBinding? = null
     private var stationList = ArrayList<Station>()
     private var mAuth: FirebaseAuth? = null
+    lateinit var user:FirebaseUser
+
+    private lateinit var departure:StationDto
+    private lateinit var middle:StationDto
+    private lateinit var arrival:StationDto
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,27 +58,54 @@ class AddFragment : Fragment() {
         val editTextDeparture = binding?.editTextDeparture
         val editTextMiddle = binding?.editTextMiddle
         val editTextArrival = binding?.editTextArrival
+        val btnAdd = binding?.btnAdd
+        val btnCancel = binding?.btnCancel
 
-
-        editTextDeparture?.setOnKeyListener { view, keyCode, event ->
+        editTextDeparture?.setOnKeyListener { _, keyCode, event ->
             if(event.action ==  KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_ENTER){
                 findStationName(editTextDeparture)
             }
             false
         }
-        editTextMiddle?.setOnKeyListener { view, keyCode, event ->
+        editTextMiddle?.setOnKeyListener { _, keyCode, event ->
             if(event.action ==  KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_ENTER){
                 findStationName(editTextMiddle)
             }
             false
         }
-        editTextArrival?.setOnKeyListener { view, keyCode, event ->
+        editTextArrival?.setOnKeyListener { _, keyCode, event ->
             if(event.action ==  KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_ENTER){
                 findStationName(editTextArrival)
             }
             false
         }
 
+        btnAdd?.setOnClickListener {
+            setStationDtoFromText(editTextDeparture, editTextMiddle, editTextArrival)
+
+        }
+    }
+
+    private fun setStationDtoFromText(editTextDeparture: AutoCompleteTextView?, editTextMiddle: AutoCompleteTextView?, editTextArrival: AutoCompleteTextView?) {
+        val departureStr = editTextDeparture?.text
+        val middleStr = editTextMiddle?.text
+        val arrivalStr = editTextArrival?.text
+        Log.d(TAG, "$departureStr / $middleStr / $arrivalStr")
+
+        val departureArr = departureStr?.split("  ")?.toMutableList()
+        val middleArr = middleStr?.split("  ")?.toMutableList()
+        val arrivalArr = arrivalStr?.split("  ")?.toMutableList()
+
+        departureArr?.get(2)?.trimStart('(')?.trimEnd(')')?.let { it1 -> departureArr.set(2, it1) }
+        middleArr?.get(2)?.trimStart('(')?.trimEnd(')')?.let { it1 -> middleArr.set(2, it1) }
+        arrivalArr?.get(2)?.trimStart('(')?.trimEnd(')')?.let { it1 -> arrivalArr.set(2, it1) }
+        Log.d(TAG, "$departureArr / $middleArr / $arrivalArr")
+
+        departure = departureArr?.let { it1 -> StationDto(it1[1], it1[0], it1[2]) }!!
+        middle = middleArr?.let { it1 -> StationDto(it1[1], it1[0], it1[2]) }!!
+        arrival = arrivalArr?.let { it1 -> StationDto(it1[1], it1[0], it1[2]) }!!
+
+        Log.d(TAG, "$departure / $middle / $arrival")
 
     }
 
