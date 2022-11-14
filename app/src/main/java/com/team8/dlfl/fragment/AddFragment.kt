@@ -26,9 +26,9 @@ class AddFragment : Fragment() {
     private var mAuth: FirebaseAuth? = null
     lateinit var user:FirebaseUser
 
-    private lateinit var departure:StationDto
-    private lateinit var middle:StationDto
-    private lateinit var arrival:StationDto
+    private lateinit var departure: HashMap<String, String>
+    private lateinit var middle: HashMap<String, String>
+    private lateinit var arrival: HashMap<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,9 +101,8 @@ class AddFragment : Fragment() {
         arrivalArr?.get(2)?.trimStart('(')?.trimEnd(')')?.let { it1 -> arrivalArr.set(2, it1) }
         Log.d(TAG, "$departureArr / $middleArr / $arrivalArr")
 
-        departure = departureArr?.let { it1 -> StationDto(it1[1], it1[0], it1[2]) }!!
-        middle = middleArr?.let { it1 -> StationDto(it1[1], it1[0], it1[2]) }!!
-        arrival = arrivalArr?.let { it1 -> StationDto(it1[1], it1[0], it1[2]) }!!
+
+        TODO("해시맵에 넣고 파이어베이스로 추가하는것까지")
 
         Log.d(TAG, "$departure / $middle / $arrival")
 
