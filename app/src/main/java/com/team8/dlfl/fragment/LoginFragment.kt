@@ -18,6 +18,7 @@ import com.team8.dlfl.activity.LoginActivity
 import com.team8.dlfl.activity.MainActivity
 import com.team8.dlfl.databinding.FragmentLoginBinding
 
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -46,13 +47,7 @@ class LoginFragment : Fragment() {
 
         binding= FragmentLoginBinding.inflate(inflater, container, false)
 
-
-        binding?.btnLogin?.setOnClickListener{
-            val email = binding?.editTextEmail?.text.toString()
-            val password = binding?.editTextPassword?.text.toString()
-
-            loginAccount(email,password)
-        }
+        setLoginBtn()
 
 
         setRegisterBtnReplaceRegisterFragment()
@@ -62,23 +57,30 @@ class LoginFragment : Fragment() {
         return binding?.root
     }
 
+    private fun setLoginBtn() {
+        binding?.btnLogin?.setOnClickListener {
+            val email = binding?.editTextEmail?.text.toString()
+            val password = binding?.editTextPassword?.text.toString()
+            loginAccount(email, password)
+        }
+    }
+
     private fun loginAccount(email: String, password: String) {
         Log.d("tag", "로그인 시도")
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this.activity as Activity) { task ->
                 if (task.isSuccessful) {
-                    Log.d("tag", "로그인 성공")
-                    // Sign in success, update UI with the signed-in user's information
-                    Toast.makeText(this.activity as Activity, "로그인 성공", Toast.LENGTH_LONG).show()
+
+                    Log.d(TAG,"로그인 성공")
+                    Toast.makeText(this.activity  as Activity, "로그인 성공", Toast.LENGTH_LONG).show()
 
                     val intent = Intent(this.activity, MainActivity::class.java)
-
                     startActivity(intent)
 
                 } else {
-                    Log.d("tag", "로그인 실패")
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(this.activity as Activity, "로그인 실패", Toast.LENGTH_LONG).show()
+
+                    Log.d(TAG,"로그인 실패")
+                    Toast.makeText(this.activity  as Activity, "로그인 실패", Toast.LENGTH_LONG).show()
                 }
             }
     }

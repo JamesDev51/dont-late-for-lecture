@@ -8,15 +8,27 @@
 
     <TextView
             android:id="@+id/text_line_number"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content" android:layout_marginRight="20dp" android:text="2호선" android:textSize="20sp"/>
+            android:layout_height="wrap_content" android:text="2호선" android:textSize="20sp" android:layout_marginStart="10dp" android:layout_width="wrap_content" android:layout_marginEnd="15dp"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/text_station_name"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                tools:text="홍대입구" android:textSize="15sp" android:layout_marginRight="15dp" android:paddingEnd="8dp"/>
+        <TextView
+                android:text="Hongdae"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/text_station_name_eng" android:layout_weight="1" android:layout_marginEnd="15dp" android:layout_marginStart="10dp"/>
+    </LinearLayout>
     <TextView
-            android:id="@+id/text_station_name"
-            android:layout_gravity="center_vertical"
-            android:paddingStart="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceListItemSmall"
-            tools:text="홍대입구" android:textSize="20sp"/>
+            android:text="k139"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/text_ex_code" android:layout_weight="1" android:layout_marginEnd="15dp" android:gravity="right"/>
 
 </LinearLayout>

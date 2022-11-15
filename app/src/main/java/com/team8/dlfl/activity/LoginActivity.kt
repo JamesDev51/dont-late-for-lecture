@@ -49,7 +49,6 @@ class LoginActivity : AppCompatActivity() {
         @JvmStatic fun newInstance() =
             LoginFragment().apply {
                 arguments = Bundle().apply {
-
                 }
             }
     }
