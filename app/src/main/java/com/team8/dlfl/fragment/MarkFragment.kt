@@ -13,8 +13,8 @@ import com.team8.dlfl.databinding.FragmentMarkBinding
 class MarkFragment : Fragment() {
 
     val marks = arrayOf( // 파이어베이스에서 데이터 가져오기
-        Mark("홍대입구", "2호선", "대곡", "경의선", "화전", "경의선"),
-        Mark("구파발", "3호선", "화전", "경의선", "대곡", "경의선")
+        Mark("홍대입구", "2호선", "대곡", "경의선"),
+        Mark("구파발", "3호선", "화전", "경의선")
     )
     //val marks = mutableListOf<Mark>()
 
