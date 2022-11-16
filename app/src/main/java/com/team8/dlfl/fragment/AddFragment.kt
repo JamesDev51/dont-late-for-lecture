@@ -89,6 +89,10 @@ class AddFragment : Fragment() {
         Log.d(TAG, "$departureArr /  $arrivalArr")
 
 
+        val dataHash = HashMap<String, String>()
+        dataHash
+
+
         TODO("해시맵에 넣고 파이어베이스로 추가하는것까지")
 
         Log.d(TAG, "$departure / $arrival")
