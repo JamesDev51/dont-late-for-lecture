@@ -43,29 +43,6 @@
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:layout_marginBottom="50dp">
-                <TextView
-                        android:text="경유"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/text_middle" android:layout_marginLeft="3dp" android:layout_marginBottom="3dp"/>
-                <AutoCompleteTextView
-                        android:id="@+id/edit_text_middle"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/radius17_back_ebebeb"
-                        android:completionThreshold="1"
-                        android:gravity="center_vertical"
-                        android:hint="경유역을 입력하세요."
-                        android:paddingLeft="10dp"
-                        android:textColorHint="#555555"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" android:singleLine="true"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/linearLayout" android:layout_marginBottom="50dp">
                 <TextView
                         android:text="도착"

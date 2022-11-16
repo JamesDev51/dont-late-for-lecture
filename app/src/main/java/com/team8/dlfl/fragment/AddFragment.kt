@@ -36,15 +36,10 @@ class AddFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val editTextDeparture = binding?.editTextDeparture
-        val editTextMiddle = binding?.editTextMiddle
         val editTextArrival = binding?.editTextArrival
 
         editTextDeparture?.setOnKeyListener { _, _, _ ->
             findStationName(editTextDeparture)
-            false
-        }
-        editTextMiddle?.setOnKeyListener { _, _, _ ->
-            findStationName(editTextMiddle)
             false
         }
         editTextArrival?.setOnKeyListener { _, _, _ ->
