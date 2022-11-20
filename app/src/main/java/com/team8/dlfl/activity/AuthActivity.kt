@@ -29,7 +29,6 @@ class AuthActivity : AppCompatActivity() {
     private fun replaceLoginFragment(){
 
         val loginFragment = LoginFragment.newInstance()
-
         replaceFragment(loginFragment)
 
     }

@@ -46,5 +46,12 @@ class MarkFragment : Fragment() {
         //  실시간 지하철 위치정보 페이지는 리사이클러 뷰를 이용해서 가기
     }
 
+    companion object {
+        @JvmStatic fun newInstance() =
+            LoginFragment().apply {
+                arguments = Bundle().apply {
+                }
+            }
+    }
 
 }

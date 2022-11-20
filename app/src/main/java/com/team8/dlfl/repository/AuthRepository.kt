@@ -83,15 +83,21 @@ class AuthRepository {
                 try{
                     auth.signInWithEmailAndPassword(loginUser.email, loginUser.password)
                         .addOnCompleteListener{ task ->
-                            Log.d(TAG, "로그인 result: ${task.result}")
-                            if (task.isSuccessful) {
-                                Log.d(TAG, "로그인 성공")
-                                result = CommonResponseDto(true, "로그인 성공")
+
+                            try {
+                                Log.d(TAG, "로그인 result: ${task.result}")
+                                if (task.isSuccessful) {
+                                    Log.d(TAG, "로그인 성공")
+                                    result = CommonResponseDto(true, "로그인 성공")
+                                    it.resume(result)
+                                }
+                                result = CommonResponseDto(false,"${task.result}")
                                 it.resume(result)
+                            } catch (e: Exception) {
+                                Log.d(TAG, "로그인 실패: ${e.message}")
+                                result = CommonResponseDto(false,"${e.message}")
                             }
-                            result = CommonResponseDto(false,"${task.result}")
-                            it.resume(result)
-                        }
+                        }.await()
                 }catch(e:FirebaseException){
                     Log.d(TAG, "로그인 실패: ${e.message}")
                     result = CommonResponseDto(false,"${e.message}")

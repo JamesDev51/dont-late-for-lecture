@@ -33,9 +33,6 @@ class MarksAdapter(val marks: Array<Mark>)
             binding.txtLnArrival.text = mark.lineArrival
             binding.txtDeparture.text = mark.departure
             binding.txtLnDeparture.text = mark.lineDeparture
-
-
-
         }
 
     }

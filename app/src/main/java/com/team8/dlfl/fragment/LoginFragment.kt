@@ -25,8 +25,6 @@ private const val TAG: String = "LoginFragment"
 class LoginFragment : Fragment() {
 
     var binding : FragmentLoginBinding?=null
-    private var auth : FirebaseAuth = Firebase.auth
-    private var database: FirebaseDatabase = Firebase.database
     private val viewModel: AuthViewModel by activityViewModels()
 
 
@@ -35,6 +33,7 @@ class LoginFragment : Fragment() {
 
         binding= FragmentLoginBinding.inflate(inflater)
 
+        viewModel.authActivity=this.activity as AuthActivity
         binding?.editTextEmail?.setText(viewModel.loginUser.email)
         binding?.editTextPassword?.setText(viewModel.loginUser.password)
 
