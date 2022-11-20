@@ -8,7 +8,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.team8.dlfl.databinding.ActivityMainBinding
 import com.team8.dlfl.R
-import com.team8.dlfl.dto.MarkDto
 
 class MainActivity : AppCompatActivity() {
 

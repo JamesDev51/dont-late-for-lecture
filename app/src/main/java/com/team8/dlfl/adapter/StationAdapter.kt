@@ -1,35 +1,33 @@
 package com.team8.dlfl.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Filter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.team8.dlfl.databinding.StationListBinding
-import com.team8.dlfl.model.Station
+import com.team8.dlfl.model.StationModel
 
-class StationAdapter(context: Context,private var stationList: List<Station>) : ArrayAdapter<Station>(context,0,stationList){
+class StationAdapter(context: Context,private var stationModelList: List<StationModel>) : ArrayAdapter<StationModel>(context,0,stationModelList){
 
-    override fun getCount(): Int = stationList.size
+    override fun getCount(): Int = stationModelList.size
 
-    override fun getItem(position: Int): Station = stationList[position]
+    override fun getItem(position: Int): StationModel = stationModelList[position]
 
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun publishResults(charSequence: CharSequence?, filterResults: FilterResults) {
                 @Suppress("UNCHECKED_CAST")
-                stationList = filterResults.values as List<Station>
+                stationModelList = filterResults.values as List<StationModel>
                 notifyDataSetChanged()
             }
 
             override fun performFiltering(charSequence: CharSequence?): FilterResults {
 
                 val results = FilterResults()
-                results.values=stationList
-                results.count=stationList.size
+                results.values=stationModelList
+                results.count=stationModelList.size
                 return results
             }
         }
@@ -50,10 +48,10 @@ class StationAdapter(context: Context,private var stationList: List<Station>) : 
             binding = StationListBinding.bind(row)
         }
 
-        binding.textLineNumber.text = stationList[position].lineNumber
-        binding.textStationName.text =stationList[position].stationName
-        binding.textStationNameEng.text=stationList[position].stationNameEng
-        binding.textExCode.text=stationList[position].externalCode
+        binding.textLineNumber.text = stationModelList[position].lineNumber
+        binding.textStationName.text =stationModelList[position].stationName
+        binding.textStationNameEng.text=stationModelList[position].stationNameEng
+        binding.textExCode.text=stationModelList[position].externalCode
 
         return row
     }

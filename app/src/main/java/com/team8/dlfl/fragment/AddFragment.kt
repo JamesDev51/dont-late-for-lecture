@@ -13,20 +13,19 @@ import com.google.firebase.auth.FirebaseUser
 import com.team8.dlfl.adapter.StationAdapter
 import com.team8.dlfl.databinding.FragmentAddBinding
 import com.team8.dlfl.db.DBHelper
-import com.team8.dlfl.model.Station
+import com.team8.dlfl.model.MarkModel
+import com.team8.dlfl.model.StationModel
+import com.team8.dlfl.repository.MarkRepository
 
 
 private const val TAG="AddFragment"
 class AddFragment : Fragment() {
 
     private var binding: FragmentAddBinding? = null
-    private var stationList = ArrayList<Station>()
+    private var stationModelList = ArrayList<StationModel>()
     private var mAuth: FirebaseAuth? = null
     lateinit var user:FirebaseUser
-
-    private lateinit var departure: HashMap<String, String>
-    private lateinit var arrival: HashMap<String, String>
-
+    private val markRepository = MarkRepository()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentAddBinding.inflate(layoutInflater)
@@ -88,14 +87,27 @@ class AddFragment : Fragment() {
         arrivalArr?.get(2)?.trimStart('(')?.trimEnd(')')?.let { it1 -> arrivalArr.set(2, it1) }
         Log.d(TAG, "$departureArr /  $arrivalArr")
 
+        val departure = departureArr.let {
+            StationModel(
+                it!![1],
+                "",
+                it[0],
+                it[2]
+            )
+        }
+        val arrival = arrivalArr.let {
+            StationModel(
+                it!![1],
+                "",
+                it[0],
+                it[2]
+            )
+        }
+        Log.d(TAG, "obj : $departure / $arrival")
 
-        val dataHash = HashMap<String, String>()
-        dataHash
+        val mark = MarkModel(departure=departure, arrival=arrival)
+        markRepository.postMark(mark)
 
-
-        TODO("해시맵에 넣고 파이어베이스로 추가하는것까지")
-
-        Log.d(TAG, "$departure / $arrival")
 
     }
 
@@ -114,7 +126,7 @@ class AddFragment : Fragment() {
             val cursor = db.rawQuery("SELECT * FROM subway_station WHERE station_name LIKE '%$keyword%'", null)
             while (cursor.moveToNext()) {
 
-                stationList.add(Station(cursor.getString(0)?:"", cursor.getString(1)?:"", cursor.getString(2) ?: "", cursor.getString(3) ?: "", cursor.getString(4) ?: ""))
+                stationModelList.add(StationModel(cursor.getString(1)?:"", cursor.getString(2)?:"", cursor.getString(3) ?: "", cursor.getString(4) ?: ""))
             }
             cursor.close()
             dbHelper.close()
@@ -122,13 +134,13 @@ class AddFragment : Fragment() {
     }
 
     private fun findStationName(editText: AutoCompleteTextView?) {
-        stationList.clear()
+        stationModelList.clear()
 
         val keyword = editText?.text.toString()
         if (keyword != "") {
             createSubwayStationList(keyword)
 
-            val adapter = StationAdapter(requireContext(),stationList)
+            val adapter = StationAdapter(requireContext(),stationModelList)
             editText?.setAdapter(adapter)
         }
     }
