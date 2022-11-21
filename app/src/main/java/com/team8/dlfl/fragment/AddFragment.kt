@@ -11,9 +11,11 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.common.internal.service.Common
 import com.team8.dlfl.R
 import com.team8.dlfl.activity.MainActivity
 import com.team8.dlfl.databinding.FragmentAddBinding
+import com.team8.dlfl.dto.CommonResponseDto
 import com.team8.dlfl.model.MarkModel
 import com.team8.dlfl.model.StationModel
 import com.team8.dlfl.viewmodel.MarkViewModel
@@ -21,6 +23,7 @@ import com.team8.dlfl.viewmodel.SubwayViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 private const val TAG="AddFragment"
@@ -63,8 +66,16 @@ class AddFragment : Fragment() {
         btnAdd?.setOnClickListener {
 
             CoroutineScope(Dispatchers.IO).launch {
-                val result = markViewModel.uploadMark(subwayViewModel.departure, subwayViewModel.arrival)
+                var result:Boolean
+                runBlocking {
+                    result = markViewModel.uploadMark(subwayViewModel.departure, subwayViewModel.arrival)
+                }
                 Log.d(TAG, "markViwModel result: $result")
+                if(result){
+                    activity?.runOnUiThread {
+                        findNavController().navigate(R.id.action_addFragment_to_markFragment)
+                    }
+                }
             }
         }
     }

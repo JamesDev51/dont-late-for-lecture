@@ -19,6 +19,8 @@ import com.team8.dlfl.repository.MarkRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 private const val TAG = "AddViewModel"
 
@@ -28,7 +30,7 @@ class MarkViewModel(): ViewModel() {
     lateinit var mainActivity: MainActivity
     private val repository: MarkRepository = MarkRepository()
 
-    suspend fun uploadMark(departure:StationModel, arrival:StationModel):Boolean {
+    suspend fun uploadMark(departure:StationModel, arrival:StationModel):Boolean  = suspendCoroutine{
         var result=CommonResponseDto(false,"")
         val newMark=MarkModel(departure,arrival)
         CoroutineScope(Dispatchers.IO).launch {
@@ -42,8 +44,8 @@ class MarkViewModel(): ViewModel() {
                     Toast.LENGTH_SHORT
                 ).show()
             },0)
-
+            it.resume(result.status)
         }
-        return result.status
+
     }
 }
