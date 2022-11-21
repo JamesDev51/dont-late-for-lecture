@@ -10,6 +10,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.team8.dlfl.adapter.MarksAdapter
 import com.team8.dlfl.dto.CommonResponseDto
 import com.team8.dlfl.model.MarkModel
 import kotlinx.coroutines.CoroutineScope
@@ -28,7 +29,7 @@ class MarkRepository {
     private val database = Firebase.database
     private val reference = database.getReference("mark")
     private val uid=auth.currentUser?.uid
-    val marks = emptyList<MarkModel>()
+    lateinit var marksAdapter: MarksAdapter
 
     suspend fun postMark(mark: MarkModel) = suspendCoroutine{
 
@@ -62,7 +63,7 @@ class MarkRepository {
 
     }
 
-    fun observeMarkList(markList: MutableLiveData<List<MarkModel>>) {
+    suspend fun observeMarkList(markList: MutableLiveData<List<MarkModel>>)=suspendCoroutine<Boolean> {spit->
 
         uid?.let {
             reference.child(it).addValueEventListener(object: ValueEventListener{
@@ -72,13 +73,12 @@ class MarkRepository {
                     for (child in snapshot.children) {
                         val dbMark = child.getValue(MarkModel::class.java)
                         Log.d(TAG,dbMark.toString())
-
                         dbMark?.let { mark -> dbMarkList.add(mark) }
                     }
 
-
-                    markList.postValue(dbMarkList)
-
+                    markList.value=dbMarkList
+                    Log.d(TAG, "mark list value : ${ markList.value.toString() }")
+                    spit.resume(true)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -86,6 +86,10 @@ class MarkRepository {
                 }
             })
         }
+    }
+
+    fun initMarksData() {
+
     }
 
 }

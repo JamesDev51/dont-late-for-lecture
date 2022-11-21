@@ -1,6 +1,7 @@
 package com.team8.dlfl.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,12 @@ import com.team8.dlfl.R
 import com.team8.dlfl.adapter.MarksAdapter
 import com.team8.dlfl.databinding.FragmentMarkBinding
 import com.team8.dlfl.viewmodel.MarkViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
+private const val TAG = "MarkFragment"
 
 class MarkFragment : Fragment() {
 
@@ -28,7 +35,24 @@ class MarkFragment : Fragment() {
 
         binding.recMarks.layoutManager = LinearLayoutManager(context) //차곡차곡
 
-        binding.recMarks.adapter = viewModel.markList.value?.let { MarksAdapter(it) } // 추가
+        CoroutineScope(Dispatchers.IO).launch {
+            runBlocking {
+                if (viewModel.init()) {
+                    val marksAdapter= viewModel.markList.value?.let { MarksAdapter(it) }
+                    viewModel.repository.marksAdapter=marksAdapter!!
+                    Log.d(TAG,"viewModel.markList.value : ${viewModel.markList.value}")
+                    Log.d(TAG,"marksAdapter : $marksAdapter")
+                    activity?.runOnUiThread{
+                        
+                        Log.d(TAG,"등록 부분 : 이제 등록")
+                        binding.recMarks.adapter = marksAdapter // 추가
+                    }
+                }
+            }
+        }
+
+
+
         viewModel.markList.observe(viewLifecycleOwner){
 
         }

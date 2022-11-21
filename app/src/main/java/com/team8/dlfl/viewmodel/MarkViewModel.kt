@@ -8,13 +8,8 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
-import androidx.navigation.fragment.findNavController
-import com.team8.dlfl.R
 import com.team8.dlfl.activity.MainActivity
 import com.team8.dlfl.dto.CommonResponseDto
-import com.team8.dlfl.fragment.AddFragment
-import com.team8.dlfl.fragment.MarkFragment
 import com.team8.dlfl.model.MarkModel
 import com.team8.dlfl.model.StationModel
 import com.team8.dlfl.repository.MarkRepository
@@ -30,12 +25,12 @@ class MarkViewModel(): ViewModel() {
 
     @SuppressLint("StaticFieldLeak")
     lateinit var mainActivity: MainActivity
-    private val repository: MarkRepository = MarkRepository()
+    val repository: MarkRepository = MarkRepository()
     private var _markList = MutableLiveData<List<MarkModel>>(emptyList())
     val markList: LiveData<List<MarkModel>> get() = _markList
 
-    init{
-        repository.observeMarkList(_markList)
+    suspend fun init(): Boolean {
+        return repository.observeMarkList(_markList)
     }
 
     suspend fun uploadMark(departure:StationModel, arrival:StationModel):Boolean  = suspendCoroutine{
