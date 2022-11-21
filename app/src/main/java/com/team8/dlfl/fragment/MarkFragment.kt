@@ -5,36 +5,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team8.dlfl.R
+import com.team8.dlfl.adapter.MarksAdapter
 import com.team8.dlfl.databinding.FragmentMarkBinding
+import com.team8.dlfl.viewmodel.MarkViewModel
 
 class MarkFragment : Fragment() {
 
-    val marks = arrayOf( // 파이어베이스에서 데이터 가져오기
-        Mark("홍대입구", "2호선", "대곡", "경의선"),
-        Mark("구파발", "3호선", "화전", "경의선")
-    )
-    //val marks = mutableListOf<Mark>()
-
-
-
-    //var binding: FragmentMarkBinding? = null  이게 원래있던거
+    val viewModel: MarkViewModel by activityViewModels()
     lateinit var binding : FragmentMarkBinding  //추가
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMarkBinding.inflate(inflater)
-        // Inflate the layout for this fragment
 
         binding.recMarks.layoutManager = LinearLayoutManager(context) //차곡차곡
-        binding.recMarks.adapter = MarksAdapter(marks) // 추가
 
-        return binding?.root// 원래있던거
-        //return inflater.inflate(R.layout.fragment_mark, container, false)
+        binding.recMarks.adapter = viewModel.markList.value?.let { MarksAdapter(it) } // 추가
+        viewModel.markList.observe(viewLifecycleOwner){
+
+        }
+
+
+        return binding.root// 원래있던거
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

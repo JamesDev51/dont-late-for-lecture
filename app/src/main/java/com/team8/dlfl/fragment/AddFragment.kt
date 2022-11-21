@@ -69,6 +69,8 @@ class AddFragment : Fragment() {
                 var result:Boolean
                 runBlocking {
                     result = markViewModel.uploadMark(subwayViewModel.departure, subwayViewModel.arrival)
+
+
                 }
                 Log.d(TAG, "markViwModel result: $result")
                 if(result){

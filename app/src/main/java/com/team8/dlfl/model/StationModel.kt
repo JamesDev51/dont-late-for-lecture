@@ -8,6 +8,7 @@ data class StationModel(
     @SerializedName("line_number") val lineNumber: String,
     @SerializedName("ex_code") val externalCode: String,
 ){
+    constructor(): this("","","","")
     override fun toString(): String {
         return "$lineNumber  $stationName  ($externalCode)"
     }

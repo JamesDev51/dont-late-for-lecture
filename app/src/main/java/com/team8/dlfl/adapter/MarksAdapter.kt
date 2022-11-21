@@ -1,13 +1,14 @@
-package com.team8.dlfl.fragment
+package com.team8.dlfl.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.team8.dlfl.databinding.ListMarksBinding
+import com.team8.dlfl.model.MarkModel
 
-class MarksAdapter(val marks: Array<Mark>)
+class MarksAdapter(private val marks: List<MarkModel>)
     : RecyclerView.Adapter<MarksAdapter.Holder>(){
-    //private var marks = mutableListOf<Mark>()//추가
+
     // 리스트 한칸 한칸이 viewhoder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ListMarksBinding.inflate(LayoutInflater.from(parent.context))
@@ -28,11 +29,11 @@ class MarksAdapter(val marks: Array<Mark>)
 //    }
 
     class Holder(private val binding: ListMarksBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(mark: Mark) {
-            binding.txtArrival.text = mark.arrival
-            binding.txtLnArrival.text = mark.lineArrival
-            binding.txtDeparture.text = mark.departure
-            binding.txtLnDeparture.text = mark.lineDeparture
+        fun bind(mark: MarkModel) {
+            binding.txtArrival.text = mark.arrival.stationName
+            binding.txtLnArrival.text = mark.arrival.lineNumber
+            binding.txtDeparture.text = mark.departure.stationName
+            binding.txtLnDeparture.text = mark.departure.lineNumber
         }
 
     }

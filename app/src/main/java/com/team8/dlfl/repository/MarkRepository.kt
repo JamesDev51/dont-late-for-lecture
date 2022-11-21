@@ -1,9 +1,14 @@
 package com.team8.dlfl.repository
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.team8.dlfl.dto.CommonResponseDto
 import com.team8.dlfl.model.MarkModel
@@ -22,6 +27,7 @@ class MarkRepository {
     private val auth = Firebase.auth
     private val database = Firebase.database
     private val reference = database.getReference("mark")
+    private val uid=auth.currentUser?.uid
     val marks = emptyList<MarkModel>()
 
     suspend fun postMark(mark: MarkModel) = suspendCoroutine{
@@ -31,9 +37,6 @@ class MarkRepository {
             runBlocking {
 
                 try {
-                    val currentUser=auth.currentUser
-                    val uid=currentUser?.uid
-
                     Log.d(TAG, "userUid: $uid")
                     uid?.let {u->
                         reference.child(u)
@@ -49,6 +52,7 @@ class MarkRepository {
                 } catch (e: FirebaseException) {
                     Log.d(TAG, "에러 메세지 :${e.message}")
                     result= CommonResponseDto(false, "${e.message}")
+
                     it.resume(result)
                 }
 
@@ -56,6 +60,32 @@ class MarkRepository {
             }
         }
 
+    }
+
+    fun observeMarkList(markList: MutableLiveData<List<MarkModel>>) {
+
+        uid?.let {
+            reference.child(it).addValueEventListener(object: ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot){
+
+                    val dbMarkList = emptyList<MarkModel>().toMutableList()
+                    for (child in snapshot.children) {
+                        val dbMark = child.getValue(MarkModel::class.java)
+                        Log.d(TAG,dbMark.toString())
+
+                        dbMark?.let { mark -> dbMarkList.add(mark) }
+                    }
+
+
+                    markList.postValue(dbMarkList)
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+        }
     }
 
 }
