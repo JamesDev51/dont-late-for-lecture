@@ -40,6 +40,7 @@ class MarkRepository {
                 try {
                     Log.d(TAG, "userUid: $uid")
                     uid?.let {u->
+                        mark.uid=u
                         reference.child(u)
                             .push()
                             .setValue(mark).addOnCompleteListener {task ->
@@ -65,6 +66,7 @@ class MarkRepository {
 
     suspend fun observeMarkList(markList: MutableLiveData<List<MarkModel>>)=suspendCoroutine<Boolean> {spit->
 
+        var resumed=false
         uid?.let {
             reference.child(it).addValueEventListener(object: ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot){
@@ -78,7 +80,10 @@ class MarkRepository {
 
                     markList.value=dbMarkList
                     Log.d(TAG, "mark list value : ${ markList.value.toString() }")
-                    spit.resume(true)
+                    if (!resumed){
+                        spit.resume(true)
+                        resumed=true
+                    }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
