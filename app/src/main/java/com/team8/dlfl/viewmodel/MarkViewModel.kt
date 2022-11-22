@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.team8.dlfl.activity.MainActivity
 import com.team8.dlfl.dto.CommonResponseDto
 import com.team8.dlfl.model.MarkModel
@@ -19,19 +20,17 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-private const val TAG = "AddViewModel"
+private const val TAG = "MarkViewModel"
 
 class MarkViewModel(): ViewModel() {
 
     @SuppressLint("StaticFieldLeak")
     lateinit var mainActivity: MainActivity
-    val repository: MarkRepository = MarkRepository()
-    private var _markList = MutableLiveData<List<MarkModel>>(emptyList())
-    val markList: LiveData<List<MarkModel>> get() = _markList
+    private val repository: MarkRepository = MarkRepository()
+    private var _markList = MutableLiveData<ArrayList<MarkModel>>()
+    val markList: LiveData<ArrayList<MarkModel>> = _markList
 
-    suspend fun init(): Boolean {
-        return repository.observeMarkList(_markList)
-    }
+
 
     suspend fun uploadMark(departure:StationModel, arrival:StationModel):Boolean  = suspendCoroutine{
         var result=CommonResponseDto(false,"")
@@ -49,6 +48,12 @@ class MarkViewModel(): ViewModel() {
             },0)
             it.resume(result.status)
         }
+    }
 
+    fun retrieveMarkList() {
+
+        viewModelScope.launch {
+            repository.readMarkList(_markList)
+        }
     }
 }

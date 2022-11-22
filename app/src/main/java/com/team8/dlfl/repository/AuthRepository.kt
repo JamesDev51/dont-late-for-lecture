@@ -36,6 +36,7 @@ class AuthRepository {
         Log.d(TAG, "파이어베이스 회원가입 진입")
         Log.d(TAG,"회원가입 동기로기다리기 시작")
         var result: CommonResponseDto
+        var resumed=false
         CoroutineScope(Dispatchers.IO).launch {
 
             runBlocking {
@@ -56,7 +57,10 @@ class AuthRepository {
                                     Log.d(TAG, "result: ${task.isSuccessful}")
                                     result = CommonResponseDto(true,"회원가입 성공")
                                     Log.d(TAG,"회원가입 동기로기다리기 완료")
-                                    it.resume(result)
+                                    if(!resumed){
+                                        it.resume(result)
+                                        resumed=true
+                                    }
                                 }
                             } catch (e: Exception) {
                                 Log.d(TAG, "안 회원가입 실패: ${e.message}")
@@ -77,6 +81,7 @@ class AuthRepository {
         Log.d(TAG, "파이어베이스 로그인 진입")
         Log.d(TAG,"로그인 동기로기다리기 시작")
         var result=CommonResponseDto(false,"")
+        var resumed=false
         CoroutineScope(Dispatchers.IO).launch {
 
             runBlocking {
@@ -92,7 +97,11 @@ class AuthRepository {
                                     it.resume(result)
                                 }
                                 result = CommonResponseDto(false,"${task.result}")
-                                it.resume(result)
+
+                                if(!resumed){
+                                    it.resume(result)
+                                    resumed=true
+                                }
                             } catch (e: Exception) {
                                 Log.d(TAG, "로그인 실패: ${e.message}")
                                 result = CommonResponseDto(false,"${e.message}")

@@ -1,6 +1,7 @@
 package com.team8.dlfl.repository
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.ktx.auth
@@ -8,15 +9,10 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import com.team8.dlfl.adapter.MarksAdapter
 import com.team8.dlfl.dto.CommonResponseDto
 import com.team8.dlfl.model.MarkModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -29,7 +25,6 @@ class MarkRepository {
     private val database = Firebase.database
     private val reference = database.getReference("mark")
     private val uid=auth.currentUser?.uid
-    lateinit var marksAdapter: MarksAdapter
 
     suspend fun postMark(mark: MarkModel) = suspendCoroutine{
 
@@ -57,44 +52,36 @@ class MarkRepository {
 
                     it.resume(result)
                 }
-
-
             }
         }
 
     }
 
-    suspend fun observeMarkList(markList: MutableLiveData<List<MarkModel>>)=suspendCoroutine<Boolean> {spit->
+    suspend fun readMarkList(markList: MutableLiveData<ArrayList<MarkModel>>) {
 
-        var resumed=false
-        uid?.let {
-            reference.child(it).addValueEventListener(object: ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot){
+        withContext(Dispatchers.IO) {
 
-                    val dbMarkList = emptyList<MarkModel>().toMutableList()
-                    for (child in snapshot.children) {
-                        val dbMark = child.getValue(MarkModel::class.java)
-                        Log.d(TAG,dbMark.toString())
-                        dbMark?.let { mark -> dbMarkList.add(mark) }
-                    }
+            runBlocking {
+                uid?.let {
+                    reference.child(it).addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            val dbMarkList = ArrayList<MarkModel>()
+                            for (child in snapshot.children) {
+                                val dbMark = child.getValue(MarkModel::class.java)
+                                dbMark?.let { mark ->
+                                    Log.d(TAG, mark.toString())
+                                    dbMarkList.add(mark) }
+                            }
+                            markList.value=dbMarkList
+                        }
 
-                    markList.value=dbMarkList
-                    Log.d(TAG, "mark list value : ${ markList.value.toString() }")
-                    if (!resumed){
-                        spit.resume(true)
-                        resumed=true
-                    }
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+                    })
                 }
-
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-            })
+            }
         }
-    }
-
-    fun initMarksData() {
-
     }
 
 }
