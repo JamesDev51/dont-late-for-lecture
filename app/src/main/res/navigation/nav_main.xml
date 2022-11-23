@@ -7,12 +7,12 @@
 
     <fragment
             android:id="@+id/entryFragment"
-            android:name="com.team8.dlfl.fragment.EntryFragment"
+            android:name="com.team8.dlfl.view.mainview.EntryFragment"
             android:label="전체 노선도"
             tools:layout="@layout/fragment_entry"/>
     <fragment
             android:id="@+id/markFragment"
-            android:name="com.team8.dlfl.fragment.MarkFragment"
+            android:name="com.team8.dlfl.view.mainview.MarkFragment"
             android:label="즐겨찾기"
             tools:layout="@layout/fragment_mark">
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
             android:id="@+id/addFragment"
-            android:name="com.team8.dlfl.fragment.AddFragment"
+            android:name="com.team8.dlfl.view.mainview.AddFragment"
             android:label="즐겨찾기 등록"
             tools:layout="@layout/fragment_add">
         <action
@@ -33,12 +33,12 @@
     </fragment>
     <fragment
             android:id="@+id/twitterWebFragment"
-            android:name="com.team8.dlfl.fragment.TwitterWebFragment"
+            android:name="com.team8.dlfl.view.mainview.TwitterWebFragment"
             android:label="최신 알림"
             tools:layout="@layout/fragment_twitter_web" />
     <fragment
             android:id="@+id/latelyFragment"
-            android:name="com.team8.dlfl.fragment.LatelyFragment"
+            android:name="com.team8.dlfl.view.mainview.LatelyFragment"
             android:label="실시간 지하철 위치 정보"
             tools:layout="@layout/fragment_lately" />
 </navigation>

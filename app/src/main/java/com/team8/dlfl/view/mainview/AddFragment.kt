@@ -1,4 +1,4 @@
-package com.team8.dlfl.fragment
+package com.team8.dlfl.view.mainview
 
 import android.os.Bundle
 import android.util.Log
@@ -6,18 +6,11 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AutoCompleteTextView
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.common.internal.service.Common
 import com.team8.dlfl.R
-import com.team8.dlfl.activity.MainActivity
 import com.team8.dlfl.databinding.FragmentAddBinding
-import com.team8.dlfl.dto.CommonResponseDto
-import com.team8.dlfl.model.MarkModel
-import com.team8.dlfl.model.StationModel
 import com.team8.dlfl.viewmodel.MarkViewModel
 import com.team8.dlfl.viewmodel.SubwayViewModel
 import kotlinx.coroutines.CoroutineScope

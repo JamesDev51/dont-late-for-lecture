@@ -1,12 +1,12 @@
-package com.team8.dlfl.activity
+package com.team8.dlfl.view.authview
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.team8.dlfl.fragment.LoginFragment
 import com.team8.dlfl.R
 import com.team8.dlfl.databinding.ActivityAuthBinding
+import com.team8.dlfl.view.mainview.MainActivity
 
 
 class AuthActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.team8.dlfl.activity
+package com.team8.dlfl.view.mainview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

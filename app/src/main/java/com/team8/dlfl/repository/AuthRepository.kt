@@ -1,15 +1,11 @@
 package com.team8.dlfl.repository
 
-import android.app.Activity
-import android.content.Intent
 import android.util.Log
-import android.widget.Toast
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.team8.dlfl.activity.MainActivity
 import com.team8.dlfl.dto.CommonResponseDto
 import com.team8.dlfl.model.LoginUserModel
 import com.team8.dlfl.model.RegisterUserModel

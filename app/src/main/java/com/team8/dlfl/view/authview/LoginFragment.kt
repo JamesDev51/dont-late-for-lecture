@@ -1,20 +1,11 @@
-package com.team8.dlfl.fragment
+package com.team8.dlfl.view.authview
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import com.team8.dlfl.activity.AuthActivity
-import com.team8.dlfl.activity.MainActivity
 import com.team8.dlfl.databinding.FragmentLoginBinding
 import com.team8.dlfl.model.LoginUserModel
 import com.team8.dlfl.viewmodel.AuthViewModel

@@ -9,7 +9,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.team8.dlfl.activity.MainActivity
+import com.team8.dlfl.view.mainview.MainActivity
 import com.team8.dlfl.dto.CommonResponseDto
 import com.team8.dlfl.model.MarkModel
 import com.team8.dlfl.model.StationModel

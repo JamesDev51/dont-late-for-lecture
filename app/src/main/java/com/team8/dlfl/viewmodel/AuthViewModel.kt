@@ -1,17 +1,13 @@
 package com.team8.dlfl.viewmodel
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModel
-import com.team8.dlfl.activity.AuthActivity
-import com.team8.dlfl.activity.MainActivity
-import com.team8.dlfl.fragment.LoginFragment
+import com.team8.dlfl.view.authview.AuthActivity
+import com.team8.dlfl.view.authview.LoginFragment
 import com.team8.dlfl.model.LoginUserModel
 import com.team8.dlfl.model.RegisterUserModel
 import com.team8.dlfl.repository.AuthRepository

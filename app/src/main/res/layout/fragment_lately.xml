@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.LatelyFragment"
+        tools:context=".view.mainview.LatelyFragment"
         android:id="@+id/frameLayout4" >
 
     <TextView
