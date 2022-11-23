@@ -8,11 +8,6 @@ import com.team8.dlfl.fragment.LoginFragment
 import com.team8.dlfl.R
 import com.team8.dlfl.databinding.ActivityAuthBinding
 
-const val EMAIL = "email"
-const val PASSWORD = "password"
-const val PASSWORD2 = "password2"
-const val NAME = "name"
-const val PHONE = "phone"
 
 class AuthActivity : AppCompatActivity() {
 
