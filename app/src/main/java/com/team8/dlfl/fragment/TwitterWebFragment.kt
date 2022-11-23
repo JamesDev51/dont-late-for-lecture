@@ -23,7 +23,7 @@ class TwitterWebFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTwitterWebBinding.inflate(inflater)
-        
+
         return binding?.root
     }
 
