@@ -2,7 +2,6 @@ package com.team8.dlfl.view.mainview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -21,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val navController = binding.frgNav.getFragment<NavHostFragment>().navController
         val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.entryFragment, R.id.twitterWebFragment, R.id.markFragment)  //  top level 메뉴들
+            setOf(R.id.entryFragment, R.id.twitterWebFragment, R.id.markFragment,R.id.myPageFragment)  //  top level 메뉴들
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNav.setupWithNavController(navController)

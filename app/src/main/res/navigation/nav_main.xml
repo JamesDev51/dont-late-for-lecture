@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/nav_main"
-        app:startDestination="@id/entryFragment">
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_main"
+            app:startDestination="@id/entryFragment" android:label="내 정보 보기">
 
     <fragment
             android:id="@+id/entryFragment"
@@ -17,10 +17,10 @@
             tools:layout="@layout/fragment_mark">
         <action
                 android:id="@+id/action_markFragment_to_addFragment"
-                app:destination="@id/addFragment" />
+                app:destination="@id/addFragment"/>
         <action
                 android:id="@+id/action_markFragment_to_latelyFragment"
-                app:destination="@id/latelyFragment" />
+                app:destination="@id/latelyFragment"/>
     </fragment>
     <fragment
             android:id="@+id/addFragment"
@@ -29,16 +29,17 @@
             tools:layout="@layout/fragment_add">
         <action
                 android:id="@+id/action_addFragment_to_markFragment"
-                app:destination="@id/markFragment" />
+                app:destination="@id/markFragment"/>
     </fragment>
     <fragment
             android:id="@+id/twitterWebFragment"
             android:name="com.team8.dlfl.view.mainview.TwitterWebFragment"
             android:label="최신 알림"
-            tools:layout="@layout/fragment_twitter_web" />
+            tools:layout="@layout/fragment_twitter_web"/>
     <fragment
             android:id="@+id/latelyFragment"
             android:name="com.team8.dlfl.view.mainview.LatelyFragment"
             android:label="실시간 지하철 위치 정보"
-            tools:layout="@layout/fragment_lately" />
+            tools:layout="@layout/fragment_lately"/>
+    <fragment android:id="@+id/myPageFragment" android:name="com.team8.dlfl.view.mainview.MyPageFragment" android:label="내정보" tools:layout="@layout/fragment_my_page"/>
 </navigation>
