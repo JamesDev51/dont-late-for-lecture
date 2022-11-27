@@ -13,6 +13,7 @@ import com.team8.dlfl.view.authview.LoginFragment
 import com.team8.dlfl.model.LoginUserModel
 import com.team8.dlfl.model.RegisterUserModel
 import com.team8.dlfl.repository.AuthRepository
+import com.team8.dlfl.view.mainview.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,22 +25,26 @@ class AuthViewModel():ViewModel() {
     @SuppressLint("StaticFieldLeak")
     lateinit var authActivity: AuthActivity
 
-    private var _email = MutableLiveData<String>()
+    @SuppressLint("StaticFieldLeak")
+    lateinit  var mainActivity: MainActivity
+
+    private var _email = MutableLiveData<String>("")
     val email: LiveData<String> get() = _email
 
-    private var _name = MutableLiveData<String>()
+    private var _name = MutableLiveData<String>("")
     val name: LiveData<String> get() = _name
 
-    private var _phone = MutableLiveData<String>()
+    private var _phone = MutableLiveData<String>("")
     val phone: LiveData<String> get() = _phone
 
     private val repository: AuthRepository = AuthRepository()
     private lateinit var registerUser: RegisterUserModel
     var loginUser: LoginUserModel = LoginUserModel("", "")
 
-    init{
+    fun init(){
         repository.observeInfo(_email,_name,_phone)
     }
+
 
     fun modifyName(newName: String) {
         _name.value = newName
@@ -49,6 +54,8 @@ class AuthViewModel():ViewModel() {
         _phone.value = newPhone
         repository.postPhone(newPhone)
     }
+
+
 
 
     fun register(email:String, password: String, password2: String, name: String,phone: String){
@@ -103,7 +110,6 @@ class AuthViewModel():ViewModel() {
             Log.d(TAG,"repository 결과: $result")
             if(result.status){
                 authActivity.startMainActivity()
-                changeViewLoginFragment()
             }
             val handler = Handler(Looper.getMainLooper())
             handler.postDelayed({
@@ -114,4 +120,19 @@ class AuthViewModel():ViewModel() {
             },0)
         }
     }
+    fun logout() {
+        Log.d(TAG, "로그아웃")
+        repository.logout()
+        mainActivity.startAuthActivity()
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({
+            Toast.makeText(
+                mainActivity, "로그아웃 하였습니다.",
+                Toast.LENGTH_SHORT
+            ).show()
+        },0)
+
+    }
+
+
 }

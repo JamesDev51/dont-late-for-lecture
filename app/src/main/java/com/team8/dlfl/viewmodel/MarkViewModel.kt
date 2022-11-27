@@ -29,8 +29,7 @@ class MarkViewModel(): ViewModel() {
     private val repository: MarkRepository = MarkRepository()
     private var _markList = MutableLiveData<ArrayList<MarkModel>>()
     val markList: LiveData<ArrayList<MarkModel>> = _markList
-
-
+    
 
     suspend fun uploadMark(departure:StationModel, arrival:StationModel):Boolean  = suspendCoroutine{
         var result=CommonResponseDto(false,"")

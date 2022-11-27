@@ -26,6 +26,10 @@ class MyPageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMyPageBinding.inflate(inflater)
+
+        authViewModel.mainActivity= activity as MainActivity
+        authViewModel.init()
+
         return binding?.root
     }
 
@@ -56,6 +60,10 @@ class MyPageFragment : Fragment() {
                 authViewModel.modifyPhone(phone)
             }
             false
+        }
+
+        binding?.btnLogout?.setOnClickListener {
+            authViewModel.logout()
         }
     }
 }

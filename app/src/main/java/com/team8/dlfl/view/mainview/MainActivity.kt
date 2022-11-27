@@ -1,5 +1,6 @@
 package com.team8.dlfl.view.mainview
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
@@ -8,10 +9,16 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.team8.dlfl.databinding.ActivityMainBinding
 import com.team8.dlfl.R
+import com.team8.dlfl.view.authview.AuthActivity
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
+
+    fun startAuthActivity(){
+        val intent = Intent(this, AuthActivity::class.java)
+        startActivity(intent)
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

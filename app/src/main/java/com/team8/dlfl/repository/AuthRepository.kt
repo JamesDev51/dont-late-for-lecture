@@ -32,6 +32,10 @@ class AuthRepository {
     private val reference  = database.getReference("user")
     private val uid=auth.currentUser?.uid
 
+    fun logout() {
+        auth.signOut()
+    }
+
     fun observeInfo(_email: MutableLiveData<String>, _name: MutableLiveData<String>, _phone: MutableLiveData<String>) {
         reference.child(uid!!).child("email").addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
