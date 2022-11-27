@@ -5,6 +5,8 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.team8.dlfl.view.authview.AuthActivity
 import com.team8.dlfl.view.authview.LoginFragment
@@ -21,10 +23,32 @@ class AuthViewModel():ViewModel() {
 
     @SuppressLint("StaticFieldLeak")
     lateinit var authActivity: AuthActivity
-    
+
+    private var _email = MutableLiveData<String>()
+    val email: LiveData<String> get() = _email
+
+    private var _name = MutableLiveData<String>()
+    val name: LiveData<String> get() = _name
+
+    private var _phone = MutableLiveData<String>()
+    val phone: LiveData<String> get() = _phone
+
     private val repository: AuthRepository = AuthRepository()
     private lateinit var registerUser: RegisterUserModel
     var loginUser: LoginUserModel = LoginUserModel("", "")
+
+    init{
+        repository.observeInfo(_email,_name,_phone)
+    }
+
+    fun modifyName(newName: String) {
+        _name.value = newName
+        repository.postName(newName)
+    }
+    fun modifyPhone(newPhone: String) {
+        _phone.value = newPhone
+        repository.postPhone(newPhone)
+    }
 
 
     fun register(email:String, password: String, password2: String, name: String,phone: String){

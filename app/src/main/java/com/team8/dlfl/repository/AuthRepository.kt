@@ -1,9 +1,14 @@
 package com.team8.dlfl.repository
 
+import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.team8.dlfl.dto.CommonResponseDto
@@ -25,7 +30,46 @@ class AuthRepository {
     private val auth = Firebase.auth
     private val database: FirebaseDatabase = Firebase.database
     private val reference  = database.getReference("user")
+    private val uid=auth.currentUser?.uid
 
+    fun observeInfo(_email: MutableLiveData<String>, _name: MutableLiveData<String>, _phone: MutableLiveData<String>) {
+        reference.child(uid!!).child("email").addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                _email.postValue(snapshot.value.toString())
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
+        reference.child(uid!!).child("name").addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                _name.postValue(snapshot.value.toString())
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+        reference.child(uid!!).child("phone").addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                _phone.postValue(snapshot.value.toString())
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+    fun postName(newName: String) {
+        reference.child(uid!!).child("name").setValue(newName)
+    }
+
+    fun postPhone(newPhone: String) {
+        reference.child(uid!!).child("phone").setValue(newPhone)
+    }
 
     suspend fun createAccount(newUser:RegisterUserModel)= suspendCoroutine{
 
@@ -111,5 +155,7 @@ class AuthRepository {
             }
         }
     }
+
+
 
 }

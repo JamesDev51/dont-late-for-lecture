@@ -41,5 +41,5 @@
             android:name="com.team8.dlfl.view.mainview.LatelyFragment"
             android:label="실시간 지하철 위치 정보"
             tools:layout="@layout/fragment_lately"/>
-    <fragment android:id="@+id/myPageFragment" android:name="com.team8.dlfl.view.mainview.MyPageFragment" android:label="내정보" tools:layout="@layout/fragment_my_page"/>
+    <fragment android:id="@+id/myPageFragment" android:name="com.team8.dlfl.view.mainview.MyPageFragment" android:label="내 정보" tools:layout="@layout/fragment_my_page"/>
 </navigation>
