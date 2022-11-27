@@ -29,11 +29,21 @@ class MarkViewModel(): ViewModel() {
     private val repository: MarkRepository = MarkRepository()
     private var _markList = MutableLiveData<ArrayList<MarkModel>>()
     val markList: LiveData<ArrayList<MarkModel>> = _markList
-    
+
+    fun deleteMark() {
+        _markList.value?.forEach{
+            if(it.deleteFlag){
+                repository.removeMark(it.uid)
+            }
+        }
+//        repository.readMarkList(_markList)
+
+
+    }
 
     suspend fun uploadMark(departure:StationModel, arrival:StationModel):Boolean  = suspendCoroutine{
-        var result=CommonResponseDto(false,"")
-        val newMark=MarkModel(departure,arrival)
+        var result: CommonResponseDto
+        val newMark=MarkModel(departure,arrival,"",false)
         CoroutineScope(Dispatchers.IO).launch {
             result=repository.postMark(newMark)
             Log.d(TAG,"repository 결과: $result")

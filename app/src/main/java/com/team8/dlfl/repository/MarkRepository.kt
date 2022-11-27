@@ -1,7 +1,6 @@
 package com.team8.dlfl.repository
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.ktx.auth
@@ -35,12 +34,11 @@ class MarkRepository {
                 try {
                     Log.d(TAG, "userUid: $uid")
                     uid?.let {u->
-                        mark.uid=u
                         reference.child(u)
                             .push()
                             .setValue(mark).addOnCompleteListener {task ->
                                 if(task.isSuccessful){
-                                    Log.d(TAG,"파이어베이스에 등록 성공")
+                                    Log.d(TAG,"파이어베이스에 등록 성공: ${task.result}")
                                     result=CommonResponseDto(true,"즐겨찾기가 등록되었습니다.")
                                     it.resume(result)
                                 }
@@ -68,6 +66,7 @@ class MarkRepository {
                             val dbMarkList = ArrayList<MarkModel>()
                             for (child in snapshot.children) {
                                 val dbMark = child.getValue(MarkModel::class.java)
+                                dbMark?.uid= child.key.toString()
                                 dbMark?.let { mark ->
                                     Log.d(TAG, mark.toString())
                                     dbMarkList.add(mark) }
@@ -81,6 +80,12 @@ class MarkRepository {
                     })
                 }
             }
+        }
+    }
+
+    fun removeMark(markUid: String) {
+        uid?.let{u->
+            reference.child(u).child(markUid).removeValue()
         }
     }
 

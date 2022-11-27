@@ -48,14 +48,20 @@ class MarkFragment : Fragment() {
             binding?.recMarks?.adapter?.notifyDataSetChanged()
         }
 
-
-
         binding?.btnPlus?.setOnClickListener {  //  즐겨찾기 등록 페이지 가기
             findNavController().navigate(R.id.action_markFragment_to_addFragment)
         }
 
         binding?.recMarks?.layoutManager = LinearLayoutManager(context) //차곡차곡
-        binding?.recMarks?.adapter=MarkListAdapter(viewModel.markList)
+        var markListAdapter = MarkListAdapter(viewModel.markList)
+        binding?.recMarks?.adapter= markListAdapter
+
+        binding?.btnDelete?.setOnClickListener {
+            viewModel.deleteMark()
+            markListAdapter= MarkListAdapter(viewModel.markList)
+            binding?.recMarks?.adapter=markListAdapter
+        }
+
     }
 
     override fun onDestroyView() {
