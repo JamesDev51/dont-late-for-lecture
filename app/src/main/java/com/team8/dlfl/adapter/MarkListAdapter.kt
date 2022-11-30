@@ -2,14 +2,12 @@ package com.team8.dlfl.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.team8.dlfl.databinding.ListMarksBinding
 import com.team8.dlfl.model.MarkModel
-import com.team8.dlfl.viewmodel.MarkViewModel
 
 class MarkListAdapter(val marks: LiveData<ArrayList<MarkModel>>)
     : RecyclerView.Adapter<MarkListAdapter.ViewHolder>(){
@@ -17,12 +15,15 @@ class MarkListAdapter(val marks: LiveData<ArrayList<MarkModel>>)
 
 
     class ViewHolder(val binding: ListMarksBinding) : RecyclerView.ViewHolder(binding.root){
+        //val message = MyFirebaseMessagingService().onMessageReceived()
         fun bind(mark: MarkModel?) {
             mark?.let {
                 binding.txtArrival.text = mark.arrival.stationName
                 binding.txtLnArrival.text = mark.arrival.lineNumber
                 binding.txtDeparture.text = mark.departure.stationName
                 binding.txtLnDeparture.text = mark.departure.lineNumber
+                if (binding.txtLnArrival.text == "02호선" || binding.txtLnDeparture.text == "02호선" ){
+                    binding.imageView.visibility = View.VISIBLE}
 
                 binding.chkDel.setOnClickListener(null)
 
