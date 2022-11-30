@@ -20,6 +20,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     // 메세지를 수신할 때 호출된다 remoteMessage는 수신한 메세지
     // 메시지 수신 메서드(포그라운드) 추가2
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        //val remoteMessage = remoteMessage
         //Log.d(TAG, "From: ${remoteMessage.from}")
 
         //받은 remoteMessage의 값 출력해보기. 데이터메세지 / 알림메세지
@@ -59,6 +60,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     // 알림 생성 메서드 (추가 3)
     private fun sendNotification(remoteMessage: RemoteMessage) {
+
         // RequestCode, Id를 고유값으로 지정하여 알림이 개별 표시
         val uniId: Int = (System.currentTimeMillis() / 7).toInt()
 
