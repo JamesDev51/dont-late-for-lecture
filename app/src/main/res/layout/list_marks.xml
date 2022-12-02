@@ -34,7 +34,7 @@
             android:text="경의선"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_ln_departure"
+            android:id="@+id/txt_updnLine"
             app:layout_constraintStart_toStartOf="@+id/txt_departure"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp"

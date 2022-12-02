@@ -4,28 +4,40 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.team8.dlfl.databinding.ListMarksBinding
 import com.team8.dlfl.model.MarkModel
+import com.team8.dlfl.viewmodel.MarkViewModel
 
-class MarkListAdapter(val marks: LiveData<ArrayList<MarkModel>>)
+private const val TAG = "MarkListAdapter"
+
+//https://jaeyeong951.medium.com/recyclerview%EC%9D%98-onclicklistener-%EA%B5%AC%ED%98%84-c1c4bf16e90f
+class MarkListAdapter(val listener: OnItemClickListener, val marks: LiveData<ArrayList<MarkModel>>)
     : RecyclerView.Adapter<MarkListAdapter.ViewHolder>(){
+
+    interface OnItemClickListener {
+        fun onItemClick(v: View, position: Int)
+    }
 
 
 
     class ViewHolder(val binding: ListMarksBinding) : RecyclerView.ViewHolder(binding.root){
         //val message = MyFirebaseMessagingService().onMessageReceived()
+        private val TAG = "MarkListAdapter"
         fun bind(mark: MarkModel?) {
             mark?.let {
                 binding.txtArrival.text = mark.arrival.stationName
                 binding.txtLnArrival.text = mark.arrival.lineNumber
                 binding.txtDeparture.text = mark.departure.stationName
-                binding.txtLnDeparture.text = mark.departure.lineNumber
-                if (binding.txtLnArrival.text == "02호선" || binding.txtLnDeparture.text == "02호선" ){
+                binding.txtUpdnLine.text = mark.departure.lineNumber
+                if (binding.txtLnArrival.text == "02호선" || binding.txtLnArrival.text == "02호선" ){
                     binding.imageView.visibility = View.VISIBLE}
 
                 binding.chkDel.setOnClickListener(null)
+
 
                 binding.chkDel.setOnCheckedChangeListener { buttonView, isChecked ->
                         mark.deleteFlag=isChecked
@@ -43,6 +55,9 @@ class MarkListAdapter(val marks: LiveData<ArrayList<MarkModel>>)
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
+        viewHolder.binding.root.setOnClickListener {
+            listener.onItemClick(viewHolder.itemView, position)
+        }
         val mark = marks.value?.getOrNull(position)
         viewHolder.bind(mark)
     }

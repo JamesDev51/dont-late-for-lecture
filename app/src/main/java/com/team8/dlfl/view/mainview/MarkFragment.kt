@@ -2,6 +2,7 @@ package com.team8.dlfl.view.mainview
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,12 +54,22 @@ class MarkFragment : Fragment() {
         }
 
         binding?.recMarks?.layoutManager = LinearLayoutManager(context) //차곡차곡
-        var markListAdapter = MarkListAdapter(viewModel.markList)
+        var markListAdapter = MarkListAdapter(object: MarkListAdapter.OnItemClickListener {
+            override fun onItemClick(v: View, position: Int) {
+                viewModel.selectedMark= viewModel.markList.value?.get(position)!!
+                findNavController().navigate(R.id.action_markFragment_to_latelyFragment)
+            }
+        }, viewModel.markList)
         binding?.recMarks?.adapter= markListAdapter
 
         binding?.btnDelete?.setOnClickListener {
             viewModel.deleteMark()
-            markListAdapter= MarkListAdapter(viewModel.markList)
+            markListAdapter= MarkListAdapter(object: MarkListAdapter.OnItemClickListener {
+                override fun onItemClick(v: View, position: Int) {
+                    viewModel.selectedMark= viewModel.markList.value?.get(position)!!
+                    findNavController().navigate(R.id.action_markFragment_to_latelyFragment)
+                }
+            },viewModel.markList)
             binding?.recMarks?.adapter=markListAdapter
         }
 

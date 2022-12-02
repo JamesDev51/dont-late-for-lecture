@@ -6,17 +6,13 @@
         android:layout_height="match_parent"
         tools:context=".view.mainview.LatelyFragment"
         android:id="@+id/frameLayout4" >
-
-    <TextView
-            android:text="실시간 위치 아래에 쫙"
-            android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView4"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="20dp"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:textSize="20sp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:id="@+id/rec_marks"
+            app:layout_constraintHorizontal_bias="0.0"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

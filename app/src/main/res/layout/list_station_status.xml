@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content">
+
+    <TextView
+            android:text="상행"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_updnLine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="10sp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.216" android:layout_marginStart="16dp" app:layout_constraintStart_toEndOf="@+id/txt_row_num"
+            android:layout_marginEnd="353dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="5dp" app:layout_constraintHorizontal_bias="1.0"/>
+    <TextView
+            android:text="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/txt_row_num" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txt_trainLineNm"/>
+    <TextView
+            android:text="수색행 - 강매방면"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/txt_trainLineNm"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="20dp" android:layout_marginBottom="10dp" app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintEnd_toStartOf="@+id/txt_msg1" android:layout_marginEnd="75dp" android:layout_marginStart="16dp" app:layout_constraintStart_toEndOf="@+id/txt_row_num"/>
+    <TextView
+            android:text="[5]번째 전역 (서강대)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/txt_msg1" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.21" android:layout_marginStart="30dp" app:layout_constraintStart_toEndOf="@+id/txt_trainLineNm" android:layout_marginEnd="30dp" app:layout_constraintEnd_toEndOf="parent"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    </LinearLayout>
+    <TextView
+            android:text="다음: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView6" app:layout_constraintEnd_toStartOf="@+id/txt_msg1" app:layout_constraintStart_toEndOf="@+id/txt_updnLine"
+            app:layout_constraintHorizontal_bias="0.956" android:layout_marginBottom="5dp" app:layout_constraintTop_toTopOf="@+id/txt_msg1" app:layout_constraintBottom_toBottomOf="@+id/txt_msg1" app:layout_constraintVertical_bias="0.0"/>
+    <TextView
+            android:text="다다음:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView7" app:layout_constraintEnd_toStartOf="@+id/txt_msg1" app:layout_constraintStart_toEndOf="@+id/txt_updnLine"
+            app:layout_constraintHorizontal_bias="0.948" app:layout_constraintBottom_toBottomOf="@+id/txt_msg2" app:layout_constraintVertical_bias="1.0" app:layout_constraintTop_toTopOf="@+id/txt_msg2" android:layout_marginTop="3dp"/>
+    <TextView
+            android:text="서강대"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/txt_msg2" app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/txt_msg1" android:layout_marginTop="5dp" android:layout_marginEnd="121dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="7dp"
+            app:layout_constraintStart_toEndOf="@+id/textView7"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

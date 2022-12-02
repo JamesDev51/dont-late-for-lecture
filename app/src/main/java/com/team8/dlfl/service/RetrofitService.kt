@@ -1,8 +1,13 @@
 package com.team8.dlfl.service
 
+import com.team8.dlfl.dto.StationStatusRespDto
+import retrofit2.Call
+import retrofit2.http.GET
+import retrofit2.http.Path
+
 interface RetrofitService {
 
-//    @GET("${BuildConfig.API_KEY}/json/SearchInfoBySubwayNameService/1/5/{keyword}/")
-//    fun getStationNameList(@Path("keyword") keyword: String): Call<StationNameRespDto>
+    @GET("/api/subway/(인증키)/xml/realtimeStationArrival/0/5/{stationName}")
+    fun getStationStatus(@Path("stationName") stationName: String): Call<StationStatusRespDto>
 
 }

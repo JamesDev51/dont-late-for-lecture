@@ -123,7 +123,7 @@ class AuthViewModel():ViewModel() {
     fun logout() {
         Log.d(TAG, "로그아웃")
         repository.logout()
-        mainActivity.startAuthActivity()
+        mainActivity.changeAuthActivity()
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             Toast.makeText(
