@@ -15,18 +15,18 @@ import com.team8.dlfl.viewmodel.MarkViewModel
 private const val TAG = "MarkListAdapter"
 
 //https://jaeyeong951.medium.com/recyclerview%EC%9D%98-onclicklistener-%EA%B5%AC%ED%98%84-c1c4bf16e90f
-class MarkListAdapter(val listener: OnItemClickListener, val marks: LiveData<ArrayList<MarkModel>>)
+class MarkListAdapter(private val listener: OnItemClickListener, private val marks: LiveData<ArrayList<MarkModel>>)
     : RecyclerView.Adapter<MarkListAdapter.ViewHolder>(){
 
     interface OnItemClickListener {
-        fun onItemClick(v: View, position: Int)
+        fun onItemClick(selectedStationName:String)
     }
 
 
 
-    class ViewHolder(val binding: ListMarksBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val binding: ListMarksBinding) : RecyclerView.ViewHolder(binding.root){
         //val message = MyFirebaseMessagingService().onMessageReceived()
-        private val TAG = "MarkListAdapter"
+
         fun bind(mark: MarkModel?) {
             mark?.let {
                 binding.txtArrival.text = mark.arrival.stationName
@@ -38,10 +38,13 @@ class MarkListAdapter(val listener: OnItemClickListener, val marks: LiveData<Arr
 
                 binding.chkDel.setOnClickListener(null)
 
+                    binding.root.setOnClickListener {
+                        listener.onItemClick(mark.departure.stationName)
+                    }
 
-                binding.chkDel.setOnCheckedChangeListener { buttonView, isChecked ->
+                binding.chkDel.setOnCheckedChangeListener { _, isChecked ->
                         mark.deleteFlag=isChecked
-                        Log.d("Adpater",mark.toString())
+                        Log.d(TAG,mark.toString())
                     }
                 }
         }
@@ -55,9 +58,9 @@ class MarkListAdapter(val listener: OnItemClickListener, val marks: LiveData<Arr
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-        viewHolder.binding.root.setOnClickListener {
-            listener.onItemClick(viewHolder.itemView, position)
-        }
+//        viewHolder.binding.root.setOnClickListener {
+//            listener.onItemClick(viewHolder.itemView, position)
+//        }
         val mark = marks.value?.getOrNull(position)
         viewHolder.bind(mark)
     }

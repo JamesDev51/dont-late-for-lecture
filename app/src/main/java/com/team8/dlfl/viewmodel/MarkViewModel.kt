@@ -32,7 +32,7 @@ class MarkViewModel(): ViewModel() {
     private var _markList = MutableLiveData<ArrayList<MarkModel>>()
     val markList: LiveData<ArrayList<MarkModel>> = _markList
 
-    lateinit var selectedMark: MarkModel
+
 
 
     fun deleteMark() {

@@ -1,5 +1,6 @@
 package com.team8.dlfl.view.mainview
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,7 @@ import com.team8.dlfl.viewmodel.TwitterViewModel
 class TwitterWebFragment : Fragment() {
 
     var binding: FragmentTwitterWebBinding? = null
-    val viewModel: TwitterViewModel by viewModels()
+    private val viewModel: TwitterViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -27,6 +28,7 @@ class TwitterWebFragment : Fragment() {
         return binding?.root
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

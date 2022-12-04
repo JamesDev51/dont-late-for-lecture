@@ -12,13 +12,11 @@ import com.team8.dlfl.dto.StationStatus
 import com.team8.dlfl.model.MarkModel
 
 
-class StationStatusListAdapter(val stationStatusList: ArrayList<StationStatus>)
+class StationStatusListAdapter(val stationStatusList: LiveData<ArrayList<StationStatus>>)
     : RecyclerView.Adapter<StationStatusListAdapter.ViewHolder>(){
 
 
     class ViewHolder(val binding: ListStationStatusBinding) : RecyclerView.ViewHolder(binding.root){
-        //val message = MyFirebaseMessagingService().onMessageReceived()
-        private val TAG = "MarkListAdapter"
         fun bind(stationStatus: StationStatus?) {
             stationStatus?.let {
                 binding.txtRowNum.text = stationStatus.rowNum.toString()
@@ -38,10 +36,9 @@ class StationStatusListAdapter(val stationStatusList: ArrayList<StationStatus>)
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-        val stationStatus = stationStatusList[position]
-        viewHolder.bind(stationStatus)
+        viewHolder.bind(stationStatusList.value?.getOrNull(position))
     }
 
-    override fun getItemCount() = stationStatusList.size
+    override fun getItemCount() = stationStatusList.value?.size ?:0
 
 }
