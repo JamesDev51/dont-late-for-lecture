@@ -22,7 +22,16 @@ class StationStatusListAdapter(val stationStatusList: LiveData<ArrayList<Station
                 binding.txtRowNum.text = stationStatus.rowNum.toString()
                 binding.txtUpdnLine.text=stationStatus.updnLine
                 binding.txtMsg1.text=stationStatus.arvlMsg2
-                binding.txtMsg2.text=stationStatus.arvlMsg3
+                binding.txtStatus.text= when(stationStatus.arvlCd){
+                    "0"->"진입"
+                    "1"->"도착"
+                    "2"->"출발"
+                    "3"->"전역 출발"
+                    "4"->"전역진입"
+                    "5"->"전역도착"
+                    "99"->"운행중"
+                    else->"상태 없음"
+                }.toString()
                 binding.txtTrainLineNm.text=stationStatus.trainLineNm
                 }
         }

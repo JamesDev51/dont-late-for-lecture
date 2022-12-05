@@ -23,6 +23,7 @@ data class StationStatus (
     val recptnDt: String,
     val arvlMsg2: String,
     val arvlMsg3: String,
+    val arvlCd: String
 )
 data class StationStatusRespDto(
                                 @SerializedName("realtimeArrivalList") val realtimeStationArrival:ArrayList<StationStatus>,

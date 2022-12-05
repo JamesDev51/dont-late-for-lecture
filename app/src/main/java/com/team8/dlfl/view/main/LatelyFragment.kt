@@ -39,6 +39,7 @@ class LatelyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.retrieveStationStatusList()
+        binding?.txtStationName?.text=viewModel.selectedStationName
         binding?.recItems?.adapter = StationStatusListAdapter(viewModel.stationStatusList)
         viewModel.stationStatusList.observe(viewLifecycleOwner) {
             binding?.recItems?.adapter?.notifyDataSetChanged()
