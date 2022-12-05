@@ -21,7 +21,7 @@ class TwitterViewModel: ViewModel() {
         viewModelScope.launch {
             repository.readNotices()?.let { jsonNotices ->
                 val nList = ArrayList<Notice>()
-                for (idx in 0 until 20) {
+                for (idx in 0 until 20) {  //최대 20개
                     jsonNotices.getJSONObject(idx)?.let { obj ->
                         nList += Notice(obj.getString("title"), obj.getString("id") + ".시위 정보", obj.getString("completed"))
                     }
