@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.team8.dlfl.dto.StationStatus
-import com.team8.dlfl.model.MarkModel
 import com.team8.dlfl.repository.StationStatusRepository
 import kotlinx.coroutines.launch
 
@@ -26,7 +25,7 @@ class StationStatusViewModel : ViewModel(){
         Log.d(TAG,this.toString())
         viewModelScope.launch {
         Log.d(TAG,selectedStationName)
-        _stationStatusList.value=repository.getStationStatus(selectedStationName)
+        repository.getStationStatus(selectedStationName,_stationStatusList)
         Log.d(TAG, _stationStatusList.value.toString())
         }
     }

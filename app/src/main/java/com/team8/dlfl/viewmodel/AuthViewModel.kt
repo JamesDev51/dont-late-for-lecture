@@ -8,12 +8,12 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.team8.dlfl.view.authview.AuthActivity
-import com.team8.dlfl.view.authview.LoginFragment
+import com.team8.dlfl.view.auth.AuthActivity
+import com.team8.dlfl.view.auth.LoginFragment
 import com.team8.dlfl.model.LoginUserModel
 import com.team8.dlfl.model.RegisterUserModel
 import com.team8.dlfl.repository.AuthRepository
-import com.team8.dlfl.view.mainview.MainActivity
+import com.team8.dlfl.view.main.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

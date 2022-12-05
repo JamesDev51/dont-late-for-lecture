@@ -12,7 +12,7 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.team8.dlfl.R
-import com.team8.dlfl.view.mainview.MainActivity
+import com.team8.dlfl.view.main.MainActivity
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     private val TAG = "FirebaseService"

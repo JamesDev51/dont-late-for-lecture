@@ -1,4 +1,4 @@
-package com.team8.dlfl.view.authview
+package com.team8.dlfl.view.auth
 
 import android.os.Bundle
 import android.view.LayoutInflater

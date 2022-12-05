@@ -9,14 +9,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.team8.dlfl.R
-import com.team8.dlfl.view.mainview.MainActivity
+import com.team8.dlfl.view.main.MainActivity
 import com.team8.dlfl.dto.CommonResponseDto
 import com.team8.dlfl.model.MarkModel
 import com.team8.dlfl.model.StationModel
 import com.team8.dlfl.repository.MarkRepository
 import kotlinx.coroutines.CoroutineScope
-import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.coroutines.resume

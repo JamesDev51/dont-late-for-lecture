@@ -2,7 +2,12 @@ package com.team8.dlfl.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class RESULT(val code:String, val developerMessage:String, val message:String, val status: Int, val total: Int)
+data class Message(
+    val code:String,
+    val developerMessage:String,
+    val message:String,
+    val status: Int,
+    val total: Int)
 data class StationStatus (
     val rowNum: Long,
     val selectedCount: Long,
@@ -19,5 +24,6 @@ data class StationStatus (
     val arvlMsg2: String,
     val arvlMsg3: String,
 )
-data class RealTimeStationArrival(@SerializedName("RESULT")val result:RESULT,@SerializedName("row") val stationStatusList: ArrayList<StationStatus>)
-data class StationStatusRespDto( @SerializedName("realtimeStationArrival") val realtimeStationArrival:RealTimeStationArrival)
+data class StationStatusRespDto(
+                                @SerializedName("realtimeArrivalList") val realtimeStationArrival:ArrayList<StationStatus>,
+                                @SerializedName("errorMessage") val message: Message)

@@ -7,7 +7,8 @@ import retrofit2.http.Path
 
 interface RetrofitService {
 
-    @GET("/api/subway/(인증키)/xml/realtimeStationArrival/0/5/{stationName}")
+
+    @GET("/api/subway/6d504d7745616c73373979586f7a4c/json/realtimeStationArrival/0/5/{stationName}")
     fun getStationStatus(@Path("stationName") stationName: String): Call<StationStatusRespDto>
 
 }

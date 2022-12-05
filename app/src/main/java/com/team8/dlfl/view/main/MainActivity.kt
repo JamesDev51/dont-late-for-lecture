@@ -1,26 +1,20 @@
-package com.team8.dlfl.view.mainview
+package com.team8.dlfl.view.main
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.team8.dlfl.R
 import com.team8.dlfl.databinding.ActivityMainBinding
 import com.team8.dlfl.service.MyFirebaseMessagingService
-import com.team8.dlfl.view.authview.AuthActivity
+import com.team8.dlfl.view.auth.AuthActivity
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
-
-    fun changeStatusFragment(){
-
-    }
 
     fun changeAuthActivity(){
         val intent = Intent(this, AuthActivity::class.java)
@@ -42,7 +36,6 @@ class MainActivity : AppCompatActivity() {
 
         // FCM 설정, Token 값 가져오기
         MyFirebaseMessagingService().getFirebaseToken()
-
 
         // DynamicLink 수신확인
         initDynamicLink()
@@ -68,6 +61,4 @@ class MainActivity : AppCompatActivity() {
 
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
-
-
 }

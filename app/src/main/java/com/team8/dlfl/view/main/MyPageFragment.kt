@@ -1,19 +1,14 @@
-package com.team8.dlfl.view.mainview
+package com.team8.dlfl.view.main
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.team8.dlfl.R
-import com.team8.dlfl.databinding.FragmentMarkBinding
 import com.team8.dlfl.databinding.FragmentMyPageBinding
 import com.team8.dlfl.viewmodel.AuthViewModel
-import com.team8.dlfl.viewmodel.MarkViewModel
 
 
 class MyPageFragment : Fragment() {

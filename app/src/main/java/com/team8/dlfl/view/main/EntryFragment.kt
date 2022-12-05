@@ -1,4 +1,4 @@
-package com.team8.dlfl.view.mainview
+package com.team8.dlfl.view.main
 
 import android.os.Bundle
 import android.view.LayoutInflater

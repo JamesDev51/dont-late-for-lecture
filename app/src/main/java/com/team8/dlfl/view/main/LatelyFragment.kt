@@ -1,4 +1,4 @@
-package com.team8.dlfl.view.mainview
+package com.team8.dlfl.view.main
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,12 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.team8.dlfl.R
 import com.team8.dlfl.adapter.StationStatusListAdapter
 import com.team8.dlfl.databinding.FragmentLatelyBinding
-import com.team8.dlfl.databinding.FragmentTwitterWebBinding
 import com.team8.dlfl.viewmodel.StationStatusViewModel
-import com.team8.dlfl.viewmodel.TwitterViewModel
 
 
 class LatelyFragment : Fragment() {

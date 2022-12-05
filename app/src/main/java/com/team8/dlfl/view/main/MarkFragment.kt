@@ -1,4 +1,4 @@
-package com.team8.dlfl.view.mainview
+package com.team8.dlfl.view.main
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.team8.dlfl.R
 import com.team8.dlfl.adapter.MarkListAdapter
 import com.team8.dlfl.databinding.FragmentMarkBinding
-import com.team8.dlfl.model.MarkModel
 import com.team8.dlfl.viewmodel.MarkViewModel
 import com.team8.dlfl.viewmodel.StationStatusViewModel
 
