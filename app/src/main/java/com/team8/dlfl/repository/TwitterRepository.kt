@@ -6,7 +6,6 @@ import org.json.JSONArray
 import java.net.HttpURLConnection
 import java.net.URL
 
-//private const val Tag = "TwitterRepository"
 
 class TwitterRepository {
     private val topUrlStr = "https://jsonplaceholder.typicode.com/"
