@@ -50,8 +50,6 @@ class MainActivity : AppCompatActivity() {
                 dataStr += "key: $key / value: ${dynamicLinkData.getString(key)}\n"
             }
 
-            //binding.tvToken.text = dataStr // 테스트용으로 화면에 보여주려고 넣은듯
-            // 이걸로 즐찾에 있는 목록 표시할수 있을 듯
         }
 
     }

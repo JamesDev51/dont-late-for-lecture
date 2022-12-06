@@ -23,12 +23,6 @@ class EntryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding?.btnTweb?.setOnClickListener {  //  최신알림 페이지 가기
-//            findNavController().navigate(R.id.action_entryFragment_to_twitterWebFragment)
-//        }
-//        binding?.btnMark?.setOnClickListener {  //  즐겨찾기 페이지 가기
-//            findNavController().navigate(R.id.action_entryFragment_to_markFragment)
-//        }
     }
 
     override fun onDestroyView() {

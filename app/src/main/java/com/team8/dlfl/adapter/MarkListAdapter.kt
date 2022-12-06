@@ -5,12 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView.OnItemClickListener
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.team8.dlfl.databinding.ListMarksBinding
 import com.team8.dlfl.model.MarkModel
-import com.team8.dlfl.viewmodel.MarkViewModel
 
 private const val TAG = "MarkListAdapter"
 
@@ -25,7 +23,6 @@ class MarkListAdapter(private val listener: OnItemClickListener, private val mar
 
 
     inner class ViewHolder(val binding: ListMarksBinding) : RecyclerView.ViewHolder(binding.root){
-        //val message = MyFirebaseMessagingService().onMessageReceived()
 
         fun bind(mark: MarkModel?) {
             mark?.let {
@@ -33,7 +30,7 @@ class MarkListAdapter(private val listener: OnItemClickListener, private val mar
                 binding.txtLnArrival.text = mark.arrival.lineNumber
                 binding.txtDeparture.text = mark.departure.stationName
                 binding.txtUpdnLine.text = mark.departure.lineNumber
-                if (binding.txtLnArrival.text == "02호선" || binding.txtLnArrival.text == "02호선" ){
+                if (binding.txtUpdnLine.text == "02호선" || binding.txtLnArrival.text == "02호선" ){
                     binding.imageView.visibility = View.VISIBLE}
 
                 binding.chkDel.setOnClickListener(null)
@@ -58,9 +55,6 @@ class MarkListAdapter(private val listener: OnItemClickListener, private val mar
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-//        viewHolder.binding.root.setOnClickListener {
-//            listener.onItemClick(viewHolder.itemView, position)
-//        }
         val mark = marks.value?.getOrNull(position)
         viewHolder.bind(mark)
     }
