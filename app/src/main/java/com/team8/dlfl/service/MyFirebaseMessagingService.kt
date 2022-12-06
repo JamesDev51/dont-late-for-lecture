@@ -12,7 +12,7 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.team8.dlfl.R
-import com.team8.dlfl.view.main.MainActivity
+import com.team8.dlfl.main.MainActivity
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     private val TAG = "FirebaseService"
@@ -34,10 +34,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }else {
             Log.e(TAG, "data가 비어있습니다. 메시지를 수신하지 못했습니다.")
         }
-
-
     }
-
 
     // 토큰 생성 메서드
     override fun onNewToken(token: String) {
